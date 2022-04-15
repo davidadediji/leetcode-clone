@@ -142,11 +142,6 @@ header nav ul li{
 	color:#ad4c4c;
 }
 
-
-
-
-/**/
-
 .wrapper{
 	width:80%;
 	margin: auto;
@@ -202,12 +197,7 @@ header nav ul li{
 .home-vendors p span{
 	color: #000;
 }
-header nav ul li{
-	margin-left: 5px;
-}
-body{
-	font-size: 12px;
-}
+
 
 /*Mobile*/
 @media screen and (min-width:250px) and (max-width:420px) {
@@ -227,13 +217,25 @@ body{
 		margin-top: 20px;
 	}
 
+	header nav ul li{
+		margin-left: 15px;
+	}
+	.vendor-item-content p{
+		text-align: center;
+	}
+
 	.btn{
 		padding:4px 7px
 	}
 
+	.vendor-item-content .container3:nth-child(4){
+		display: none;
+	}
+	.section-vendor-type1 .vendor-items .vendor-name .view-all{
+		display: none;
+	}
+
 }
-
-
 
 @media screen and (min-width:250px) and (max-width:600px) {
 	header{
@@ -312,11 +314,20 @@ body{
 	.home-vendors .instance2{
 		margin-top: 20px;
 	}
+	header nav ul li{
+		margin-left: 15px;
+	}
+	.vendor-item-content .view-all{
+		text-align: center;
+		color:#ad4c4c
+	}
+	.vendor-item-content .container3:nth-child(4){
+		display: none;
+	}
 
 }
 
 @media screen and (min-width:601px) and (max-width:1200px){
-
 	header{
 		margin-top:23px;
 	}
@@ -368,8 +379,39 @@ body{
 	footer{
 		text-align: center;
 	}
-	home-vendors > p{
 
+	/*Vendor*/
+	main{
+		width: 79vw;
+	}
+	.vendor-items{
+		width:100%;
+		margin-top: 20px;
+		margin-bottom: 52px;
+	}
+
+	.vendor-items div img{
+		width: 100%;
+	}
+	.section-vendor-type1 .vendor-items .vendor-name img{
+		width:45px
+	}
+
+	.vendor-item-content .container3{
+		margin-bottom: 25px;
+	}
+	.home-vendors .instance2{
+		margin-top: 20px;
+	}
+	header nav ul li{
+		margin-left: 30px;
+	}
+	.vendor-item-content .view-all{
+		text-align: center;
+		color:#ad4c4c
+	}
+	.vendor-item-content .container3:nth-child(4){
+		display: none;
 	}
 }
 
@@ -477,5 +519,18 @@ body{
 	.vendor-item-content-name-price{
 		margin-top: 15px;
 		margin-bottom: 20px;
+	}
+	.vendor-item-content .view-all{
+		display: none;
+	}
+
+	.vendor-name{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.view-all{
+		color: #ad4c4c;
 	}
 }
