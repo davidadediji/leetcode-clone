@@ -231,7 +231,7 @@ header nav ul li{
 	.vendor-item-content .container3:nth-child(4){
 		display: none;
 	}
-	.section-vendor-type1 .vendor-items .vendor-name .view-all{
+	.section-vendor-type1 .vendor-items .vendor-name .view-All{
 		display: none;
 	}
 
@@ -317,7 +317,7 @@ header nav ul li{
 	header nav ul li{
 		margin-left: 15px;
 	}
-	.vendor-item-content .view-all{
+	.vendor-item-content .view-All{
 		text-align: center;
 		color:#ad4c4c
 	}
@@ -406,7 +406,7 @@ header nav ul li{
 	header nav ul li{
 		margin-left: 30px;
 	}
-	.vendor-item-content .view-all{
+	.vendor-item-content .view-All{
 		text-align: center;
 		color:#ad4c4c
 	}
@@ -520,7 +520,7 @@ header nav ul li{
 		margin-top: 15px;
 		margin-bottom: 20px;
 	}
-	.vendor-item-content .view-all{
+	.vendor-item-content .view-All{
 		display: none;
 	}
 
@@ -530,7 +530,7 @@ header nav ul li{
 		align-items: center;
 	}
 
-	.view-all{
+	.view-All{
 		color: #ad4c4c;
 	}
 }
