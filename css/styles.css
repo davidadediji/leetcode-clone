@@ -126,6 +126,10 @@ header nav ul li{
 	color:#4e4d4d;
 }
 
+.bg-color4{
+	color:#c9c9c9
+}
+
 .bg-main-color{
 	color:#000;
 }
@@ -179,8 +183,59 @@ header nav ul li{
 	width: 340px;
 }
 
+/*Vendors page*/
+
+.vendor-item-content{
+	display: grid;
+}
+
+.vendor-item-content .container3 .vendor-item-image img, .vendor-item-content .container3 .vendor-item-content-name-price {
+	width:100%;
+}
+
+.vendor-item-content-name-price{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 20px;
+}
+
+.home-vendors p span{
+	color: #000;
+}
+header nav ul li{
+	margin-left: 5px;
+}
+body{
+	font-size: 12px;
+}
+
 /*Mobile*/
-@media screen and (max-width:600px) {
+@media screen and (min-width:250px) and (max-width:420px) {
+	main{
+		width: 79vw;
+	}
+
+	.section-vendor-type1 .vendor-items .vendor-name img{
+		width:45px
+	}
+
+	vendor-item-content .container3{
+		margin-bottom: 25px;
+	}
+
+	home-vendors .instance2{
+		margin-top: 20px;
+	}
+
+	.btn{
+		padding:4px 7px
+	}
+
+}
+
+
+
+@media screen and (min-width:250px) and (max-width:600px) {
 	header{
 		margin-top:23px;
 		margin-bottom: 53px;
@@ -247,6 +302,16 @@ header nav ul li{
 	.vendor-items div img{
 		width: 100%;
 	}
+	.section-vendor-type1 .vendor-items .vendor-name img{
+		width:45px
+	}
+
+	.vendor-item-content .container3{
+		margin-bottom: 25px;
+	}
+	.home-vendors .instance2{
+		margin-top: 20px;
+	}
 
 }
 
@@ -302,6 +367,9 @@ header nav ul li{
 
 	footer{
 		text-align: center;
+	}
+	home-vendors > p{
+
 	}
 }
 
@@ -378,5 +446,36 @@ header nav ul li{
 	footer .terms{
 		display: flex;
 		justify-content: space-between;
+	}
+
+	/*Vendor*/
+	.vendor-item-content{
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		column-gap: 53px;
+	}
+
+	header{
+		margin-bottom: 92px;
+	}
+
+	.home-vendors .instance1{
+		padding-bottom: 33px;
+	}
+
+	.home-vendors .instance2{
+		padding-bottom: 26px;
+	}
+
+	.section-vendor-type1 .vendor-item-content{
+		margin-top: 13px;
+	}
+
+	hr{
+		margin-top: 61px;
+		margin-bottom: 56px;
+	}
+	.vendor-item-content-name-price{
+		margin-top: 15px;
+		margin-bottom: 20px;
 	}
 }
