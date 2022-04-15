@@ -352,4 +352,9 @@ header nav ul li{
 		text-align: center;
 		line-height: 20px;
 	}
+
+	footer .terms{
+		display: flex;
+		justify-content: space-between;
+	}
 }
