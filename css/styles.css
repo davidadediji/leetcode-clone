@@ -28,6 +28,10 @@ a{
 	color:#000;
 }
 
+a:hover{
+	color:#ad4c4c;
+}
+
 header{
 	display: flex;
 	flex-direction: row;
@@ -50,6 +54,8 @@ header nav ul li{
 	padding-top:10px;
 	padding-left:10px;
 	padding-bottom: 13px;
+	border: 1px solid #ad4c4c;
+	border-radius: 5px;
 }
 .font-1{
 	font-weight: 600;
@@ -226,6 +232,22 @@ header nav ul li{
 	footer{
 		text-align: center;
 	}
+
+	/*Vendor page*/
+
+	main{
+		width: 79vw;
+	}
+	.vendor-items{
+		width:100%;
+		margin-top: 20px;
+		margin-bottom: 52px;
+	}
+
+	.vendor-items div img{
+		width: 100%;
+	}
+
 }
 
 @media screen and (min-width:601px) and (max-width:1200px){
