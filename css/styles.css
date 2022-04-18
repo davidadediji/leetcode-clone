@@ -47,6 +47,9 @@ header nav ul li{
 	margin-left: 20px;
 }
 
+footer{
+	margin-bottom: 30px;
+}
 .input{
 	width: 100%;
 	outline: none;
