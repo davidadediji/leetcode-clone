@@ -1,2 +1,5 @@
-import { Express, Request, NextFunction, Response } from "express"
-export const notFound = (req: Request, res: Response, next: NextFunction) => res.status(404).send('Route does not exist')
+import { NextFunction, Request, Response } from 'express';
+
+export function notFound(req: Request, res: Response, next: NextFunction) {
+	return res.status(200).json({ message: 'Route does not exist' });
+}
