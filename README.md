@@ -1,3 +1,8 @@
 # Task Manager API
 
-Responsive practice with html and css by dufuna
+API to create, view, update and delete tasks
+
+### Technologies used 
+- Express
+- Typescript
+- Google cloud
