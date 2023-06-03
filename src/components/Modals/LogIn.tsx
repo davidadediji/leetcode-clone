@@ -5,14 +5,12 @@ import { useSetRecoilState } from 'recoil';
 export default function LogIn() {
 	const setAuthModalState = useSetRecoilState(authModalState);
 	function handleClick(type: 'login' | 'register' | 'forgetPassword') {
-		setAuthModalState((prevValue=>{
-			return(
-				{
-					...prevValue,
-					type
-				}
-			)
-		}))
+		setAuthModalState((prevValue) => {
+			return {
+				...prevValue,
+				type,
+			};
+		});
 	}
 	return (
 		<form action='' className=' space-y-6 px-5 py-4'>

@@ -47,7 +47,7 @@ function useCloseModal() {
 	const setAuthModalState = useSetRecoilState(authModalState);
 
 	const closeModal = () => {
-		setAuthModalState((prev) => ({ ...prev, isOpen: false, type:'login' }));
+		setAuthModalState((prev) => ({ ...prev, isOpen: false, type: 'login' }));
 	};
 
 	useEffect(() => {

@@ -6,12 +6,10 @@ export default function SignUp() {
 	const setAuthModalState = useSetRecoilState(authModalState);
 	function handleClick() {
 		setAuthModalState((prev) => {
-			return(
-				{
-					...prev,
-					type:'login'
-				}
-			)
+			return {
+				...prev,
+				type: 'login',
+			};
 		});
 	}
 	return (

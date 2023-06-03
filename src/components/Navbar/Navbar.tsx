@@ -4,19 +4,17 @@ import Image from 'next/image';
 import { useSetRecoilState } from 'recoil';
 import { authModalState } from '@/atoms/authModalAtom';
 
-interface NavbarProps {
-  
-}
+interface NavbarProps {}
 
 export default function Navbar() {
 	const setAuthModalState = useSetRecoilState(authModalState);
 	function handleClick() {
 		setAuthModalState((prev) => {
-      return({
-        ...prev,
-        isOpen:true
-      })
-    });
+			return {
+				...prev,
+				isOpen: true,
+			};
+		});
 	}
 	return (
 		<div className=' flex items-center justify-between sm:px-12 md:px-24 px-2'>
