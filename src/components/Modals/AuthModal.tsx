@@ -58,7 +58,7 @@ function useCloseModal() {
 		};
 		window.addEventListener('keydown', handleEscape);
 		return () => window.removeEventListener('keydown', handleEscape);
-	}, []);
+	});
 
 	return closeModal;
 }
