@@ -7,12 +7,13 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<RecoilRoot>
 			<Head>
-				<title>
-          Leetcode Clone
-        </title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'/>
-        <link rel="icon" href="favicon.png" />
-        <meta name="description" content="application that contains leetcode questions and solutions" />
+				<title>Leetcode Clone</title>
+				<meta name='viewport' content='width=device-width, initial-scale=1' />
+				<link rel='icon' href='favicon.png' />
+				<meta
+					name='description'
+					content='application that contains leetcode questions and solutions'
+				/>
 			</Head>
 			<Component {...pageProps} />
 		</RecoilRoot>
