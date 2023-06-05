@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 
 type YouTubePlayerType = {
 	isOpen: boolean;
-	videoId: string | undefined;
+	videoId: string;
 };
 
 interface YouTubeModalProps {

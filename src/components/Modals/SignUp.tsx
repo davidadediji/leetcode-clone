@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
 	const setAuthModalState = useSetRecoilState(authModalState);
@@ -30,22 +31,25 @@ export default function SignUp() {
 
 	async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		if (!inputs.displayName || !inputs.email || !inputs.password)return alert('please fill in all fields')
+		if (!inputs.displayName || !inputs.email || !inputs.password)
+			return toast('please fill in all fields');
 		try {
-			const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
-			if(!newUser)return;
-			router.push('/')
-			
-		} catch (error:any) {
-			alert(error.message)
+			const newUser = await createUserWithEmailAndPassword(
+				inputs.email,
+				inputs.password
+			);
+			if (!newUser) return;
+			router.push('/');
+		} catch (error: any) {
+			toast.error(error.message);
 		}
 	}
-	useEffect(()=>{
-		if (error){
-			alert(`message: ${error.message} code:${error.code}`)
+	useEffect(() => {
+		if (error) {
+			toast.error(`message: ${error.message} code:${error.code}`);
 		}
-	}, [error])
-	
+	}, [error]);
+
 	return (
 		<form action='' className=' space-y-6 px-5 py-4' onSubmit={handleRegister}>
 			<h3 className='text-xl font-medium text-white'>Register to LeetClone</h3>

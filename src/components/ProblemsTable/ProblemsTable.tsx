@@ -7,11 +7,10 @@ import YoutubeModal from '../Modals/YoutubeModal';
 
 interface ProblemsTableProps {}
 export default function ProblemsTable() {
-    const [youtubePlayer, setYoutubePlayer] = useState<{isOpen:boolean, videoId:string|undefined}>({isOpen: false, videoId:''});
-    
-    function closeModal(){
-        setYoutubePlayer((prev)=>({...prev, isOpen:false, videoId:''}))
-    }
+	const [youtubePlayer, setYoutubePlayer] = useState({ isOpen: false, videoId: '' });
+	function closeModal() {
+		setYoutubePlayer((prev) => ({ ...prev, isOpen: false, videoId: '' }));
+	}
 	return (
 		<>
 			<tbody className='text-white'>
@@ -47,7 +46,12 @@ export default function ProblemsTable() {
 									<AiFillYoutube
 										className='hover:text-red-600 cursor-pointer'
 										fontSize='20px'
-										onClick={()=>setYoutubePlayer({isOpen:true, videoId:problem?.videoId})}
+										onClick={() =>
+											setYoutubePlayer({
+												isOpen: true,
+												videoId: problem.videoId as string,
+											})
+										}
 									/>
 								) : (
 									<p className='text-gray-400'>Coming soon ...</p>
@@ -57,7 +61,9 @@ export default function ProblemsTable() {
 					);
 				})}
 			</tbody>
-            {youtubePlayer.isOpen && <YoutubeModal youtubePlayer={youtubePlayer} closeModal = {closeModal}/>}
+			{youtubePlayer.isOpen && (
+				<YoutubeModal youtubePlayer={youtubePlayer} closeModal={closeModal} />
+			)}
 		</>
 	);
 }

@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function LogIn() {
 	const setAuthModalState = useSetRecoilState(authModalState);
@@ -14,7 +15,7 @@ export default function LogIn() {
 
 	useEffect(() => {
 		if (error) {
-			alert(error.message);
+			toast.error(error.message);
 		}
 	}, [error]);
 
@@ -36,16 +37,19 @@ export default function LogIn() {
 
 	async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		if (!userInput.email || !userInput.password) return alert('Please fill all required fields');
-		try{
-			const loggedInUser = await signInWithEmailAndPassword(userInput.email, userInput.password)
-			if(!loggedInUser){
+		if (!userInput.email || !userInput.password)
+			return toast('Please fill all required fields');
+		try {
+			const loggedInUser = await signInWithEmailAndPassword(
+				userInput.email,
+				userInput.password
+			);
+			if (!loggedInUser) {
 				return;
 			}
-			router.push('/')
-
-		}catch(error:any){
-			alert(error.message)
+			router.push('/');
+		} catch (error: any) {
+			toast.error(error.message);
 		}
 	}
 
@@ -88,7 +92,7 @@ export default function LogIn() {
 				type='submit'
 				className='w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 bg-brand-orange hover:bg-brand-orange-s'
 			>
-				{loading ? 'logging in' : 'login' }
+				{loading ? 'logging in' : 'login'}
 			</button>
 			<button className='flex w-full justify-end'>
 				<a
