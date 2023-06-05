@@ -1,9 +1,10 @@
 import { authModalState } from '@/atoms/authModalAtom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
 	const setAuthModalState = useSetRecoilState(authModalState);
@@ -30,32 +31,25 @@ export default function SignUp() {
 
 	async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		if (!inputs.displayName || !inputs.email || !inputs.password)
+			return toast('please fill in all fields');
 		try {
-			const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
-			if(!newUser)return;
-			router.push('/')
-			
-		} catch (error:any) {
-			alert(error.message)
+			const newUser = await createUserWithEmailAndPassword(
+				inputs.email,
+				inputs.password
+			);
+			if (!newUser) return;
+			router.push('/');
+		} catch (error: any) {
+			toast.error(error.message);
 		}
 	}
-	if (error) {
-		return (
-			<div>
-				<p>Error: {error.message}</p>
-			</div>
-		);
-	}
-	if (loading) {
-		return <p>Loading...</p>;
-	}
-	if (user) {
-		return (
-			<div>
-				<p>Registered User: {user.user.email}</p>
-			</div>
-		);
-	}
+	useEffect(() => {
+		if (error) {
+			toast.error(`message: ${error.message} code:${error.code}`);
+		}
+	}, [error]);
+
 	return (
 		<form action='' className=' space-y-6 px-5 py-4' onSubmit={handleRegister}>
 			<h3 className='text-xl font-medium text-white'>Register to LeetClone</h3>
@@ -111,7 +105,7 @@ export default function SignUp() {
 				type='submit'
 				className='w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 bg-brand-orange hover:bg-brand-orange-s'
 			>
-				Register
+				{loading ? <p>Registering</p> : <p>Register</p>}
 			</button>
 			<div className='text-sm font-medium text-gray-500'>
 				Already have an account?

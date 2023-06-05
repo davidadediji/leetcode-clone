@@ -1,9 +1,24 @@
 import { authModalState } from '@/atoms/authModalAtom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase/firebase';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function LogIn() {
 	const setAuthModalState = useSetRecoilState(authModalState);
+	const [userInput, setUserInput] = useState({ email: '', password: '' });
+	const [signInWithEmailAndPassword, user, loading, error] =
+		useSignInWithEmailAndPassword(auth);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (error) {
+			toast.error(error.message);
+		}
+	}, [error]);
+
 	function handleClick(type: 'login' | 'register' | 'forgetPassword') {
 		setAuthModalState((prevValue) => {
 			return {
@@ -12,8 +27,34 @@ export default function LogIn() {
 			};
 		});
 	}
+
+	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+		setUserInput((prev) => ({
+			...prev,
+			[event.target.name]: event.target.value,
+		}));
+	}
+
+	async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		if (!userInput.email || !userInput.password)
+			return toast('Please fill all required fields');
+		try {
+			const loggedInUser = await signInWithEmailAndPassword(
+				userInput.email,
+				userInput.password
+			);
+			if (!loggedInUser) {
+				return;
+			}
+			router.push('/');
+		} catch (error: any) {
+			toast.error(error.message);
+		}
+	}
+
 	return (
-		<form action='' className=' space-y-6 px-5 py-4'>
+		<form action='' className=' space-y-6 px-5 py-4' onSubmit={handleLogin}>
 			<h3 className='text-xl font-medium text-white'>Sign in to LeetClone</h3>
 			<div>
 				<label
@@ -23,6 +64,7 @@ export default function LogIn() {
 					Email
 				</label>
 				<input
+					onChange={handleInputChange}
 					type='email'
 					name='email'
 					id='email'
@@ -38,6 +80,7 @@ export default function LogIn() {
 					Password
 				</label>
 				<input
+					onChange={handleInputChange}
 					type='password'
 					name='password'
 					id='password'
@@ -49,7 +92,7 @@ export default function LogIn() {
 				type='submit'
 				className='w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 bg-brand-orange hover:bg-brand-orange-s'
 			>
-				Login
+				{loading ? 'logging in' : 'login'}
 			</button>
 			<button className='flex w-full justify-end'>
 				<a
