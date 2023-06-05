@@ -22,7 +22,7 @@ export default function Topbar() {
 					className={`flex w-full items-center justify-between max-w-[1200px] mx-auto`}
 				>
 					<Link href='/' className='h-[22px] flex-1'>
-						<Image src='/logo-full.png' alt='Logo' className='h-full' />
+						<Image src='/logo-full.png' alt='Logo' className='h-full' width={200} height={200} />
 					</Link>
 
 					<div className='flex items-center space-x-4 flex-1 justify-end'>
